@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,18 +19,27 @@ import br.com.residencia.fabrica.models.Endereco;
 import br.com.residencia.fabrica.repository.EnderecoRepository;
 
 @RestController
-@RequestMapping("/fabrica")
+@RequestMapping("/fabrica/enderecos")
 public class EnderecoController {
 
 	@Autowired
 	private EnderecoRepository er;
 
-	@GetMapping("/enderecos")
+	@GetMapping
 	public List<EnderecoDto> listarEnderecos() {
 
 		List<Endereco> enderecos = er.findAll();
 
 		return EnderecoDto.convert(enderecos);
+
+	}
+
+	@GetMapping("/bairro/{startsWith}")
+	public List<Endereco> findByStartWidth(@PathVariable String startsWith) {
+		String upperCase = startsWith.toUpperCase();
+		List<Endereco> enderecos = er.findByBairro(upperCase);
+
+		return enderecos;
 
 	}
 

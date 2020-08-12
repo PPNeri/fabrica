@@ -8,8 +8,8 @@ import br.com.residencia.fabrica.models.Endereco;
 public class EnderecoDto {
 
 	private Long id;
+	private String rua;
 	private String bairro;
-	private String cep;
 
 	public EnderecoDto() {
 	}
@@ -17,15 +17,19 @@ public class EnderecoDto {
 	public EnderecoDto(Endereco e) {
 		this.id = e.getId();
 		this.bairro = e.getBairro();
-		this.cep = e.getCep();
+		this.rua = e.getRua();
 	}
 
 	public String getBairro() {
 		return bairro;
 	}
 
-	public String getCep() {
-		return cep;
+	public String getRua() {
+		return rua;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public static List<EnderecoDto> convert(List<Endereco> enderecos) {

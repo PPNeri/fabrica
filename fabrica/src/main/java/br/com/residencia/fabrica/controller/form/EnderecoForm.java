@@ -25,7 +25,7 @@ public class EnderecoForm {
 
 	public Endereco convert() {
 
-		return new Endereco(bairro, cep);
+		return new Endereco(bairro,cep);
 
 	}
 

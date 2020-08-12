@@ -1,0 +1,1 @@
+INSERT INTO ENDERECO (rua,bairro,cep)values('RUA DO BARCELONA',upper('inserirEnderecoLetrasMaiusculas'),25150000);
